@@ -69,10 +69,10 @@ function injectContent(index) {
   return `
   <div class="card__inner">
     <div class="card__front">
-    <img src="/imgs/blank.png" alt="">
+    <img src="imgs/blank.png" alt="">
     </div>
     <div class="card__back">
-    <img src="/imgs/${cards[index]}.png" alt="">
+    <img src="imgs/${cards[index]}.png" alt="">
     </div>
   </div> `;
 }
