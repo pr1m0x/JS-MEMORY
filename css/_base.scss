@@ -1,0 +1,153 @@
+/* General Settings */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #333;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  display: grid;
+  position: relative;
+  height: 95vh;
+  align-content: center;
+  justify-content: center;
+  background-color: #1d1d1d;
+}
+
+/* Board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 15rem);
+  grid-template-rows: repeat(3, 15rem);
+  gap: 1rem;
+}
+
+/* Button */
+.btn {
+  color: #eb2603;
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background-color: yellow;
+  border-radius: 5em;
+  padding: 1.5rem;
+  box-shadow: 0 9px #eb2603;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(5px);
+    box-shadow: 0 4px #eb2603;
+  }
+}
+
+.btn__start.hidden,
+.btn__restart.hidden,
+.board.hidden {
+  visibility: hidden;
+}
+
+/* Card */
+.card {
+  display: grid;
+  position: relative;
+  perspective: 1000px;
+  & .card__inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  & .card__back {
+    transform: rotateY(180deg);
+  }
+
+  & .card__front,
+  & .card__back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.5rem;
+    width: 100%;
+    border-radius: 1.5rem;
+
+    & img {
+      width: 100%;
+      border-radius: 1.5rem;
+    }
+  }
+}
+
+.flip .card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Footer */
+.signature {
+  color: white;
+  font-family: monospace;
+  align-self: center;
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  opacity: 0.5;
+  z-index: -1;
+  & a {
+    color: inherit;
+  }
+}
+
+/* Animations */
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
